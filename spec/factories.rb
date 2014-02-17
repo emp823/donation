@@ -8,9 +8,9 @@ FactoryGirl.define do
   end
 
   factory :item do
-    height rand(100)
-    width rand(100)
-    weight rand(100)
+    sequence(:height) { |n| n }
+    sequence(:width) { |n| n }
+    sequence(:weight) { |n| n }
   end
 
   factory :voucher do
@@ -18,23 +18,23 @@ FactoryGirl.define do
   end
 
   factory :experience do
-    latitude rand() * 90
-    longitude rand() * 180
+    latitude 50.00
+    longitude 50.00
     sequence(:contact_name) { |n| "Person #{n}" }
   end
 
-  factory :donation do |d|
+  factory :donation do
     sequence(:title) { |n| "Title #{n}" }
     sequence(:description) { |n| "Description #{n}" }
     user
-    :item_donation do
+    factory :item_donation do
       association :donatable, factory: :item
     end
-    :voucher_donation do
-      association :donatable, factory: :item
+    factory :voucher_donation do
+      association :donatable, factory: :voucher
     end
-    :experience_donation do
-      association :donatable, factory: :item
+    factory :experience_donation do
+      association :donatable, factory: :experience
     end
   end
 

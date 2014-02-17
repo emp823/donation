@@ -1,5 +1,11 @@
 require 'spec_helper'
 
 describe Voucher do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before { @voucher = FactoryGirl.create(:voucher) }
+
+  subject { @voucher }
+
+  it { should respond_to(:expiration_date) }
+
+  it { should be_valid }
 end

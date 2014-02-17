@@ -5,6 +5,8 @@ Donator::Application.routes.draw do
 
   root 'static_pages#home'
 
+  resources :users
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

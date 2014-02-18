@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @donation do |f| %>
+
+      <% if @donation.errors.any? %>
+        <div class="error_messages">
+          <h2><%= pluralize(@donation.errors.count, "error") %>:</h2>
+          <ul>
+          <% @donation.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :title, "Donation Title" %>
+        <%= f.text_field :title %>
+
+        <%= f.label :description, "Donation Description" %>
+        <%= f.text_field :description %>
+      </div>
+
+      <ol>
+        <%= f.fields_for :donatable do |builder| %>
+          <%= render 'donatable_fields', f: builder %>
+        <% end %>
+        <%= link_to_add_fields "Add Donatable", f, :donatable %>
+      </ol>
+
+      <br/>
+
+      <div class="actions">
+        <%= f.submit "Create Donation", class: "btn btn-large btn-primary" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

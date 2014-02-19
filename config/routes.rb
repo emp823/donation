@@ -6,4 +6,8 @@ Donator::Application.routes.draw do
   resources :users
 
   resources :donations
+
+  resources :items
+  resources :vouchers
+  resources :experiences
 end

@@ -1,10 +1,14 @@
 class DonationsController < ApplicationController
+
+  before_filter :authenticate_user!
+
   def new
     @donation = Donation.new()
   end
 
   def create
     @donation = Donation.new(donation_params)
+    @donation.user_id = current_user.id
     if @donation.save
       redirect_to @donation, notice: "Successfully created donation!"
     else
@@ -15,7 +19,7 @@ class DonationsController < ApplicationController
   def update
     @donation = Donation.find(params[:id])
     if @donation.update_attributes(donation_params)
-      redirect_to @donation, notice: "Updated donation!"
+      redirect_to current_user, notice: "Updated donation!"
     else
       render :edit
     end

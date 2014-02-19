@@ -13,6 +13,10 @@ describe Donation do
     it { should respond_to(:description) }
     it { should respond_to(:donatable_type) }
     it { should respond_to(:donatable_id) }
+
+    it { should be_valid }
+
+    it { should belong_to(:donatable) }
   end
 
   subject { voucher_donation }
@@ -23,6 +27,10 @@ describe Donation do
     it { should respond_to(:description) }
     it { should respond_to(:donatable_type) }
     it { should respond_to(:donatable_id) }
+
+    it { should be_valid }
+
+    it { should belong_to(:donatable) }
   end
 
   subject { experience_donation }
@@ -33,6 +41,10 @@ describe Donation do
     it { should respond_to(:description) }
     it { should respond_to(:donatable_type) }
     it { should respond_to(:donatable_id) }
+
+    it { should be_valid }
+
+    it { should belong_to(:donatable) }
   end
 
 end

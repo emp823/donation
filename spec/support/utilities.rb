@@ -44,6 +44,13 @@ def enter_experience_donation
   fill_in 'Latitude', with: 2.00
   fill_in 'Longitude', with: 2.00
   fill_in 'Contact Name', with: "Me"
-  fill_in 'Title', with: "Test"
+  fill_in 'Title', with: "Test Experience123"
   fill_in 'Description', with: "Test"
+end
+
+def make_experience(user)
+  valid_signin(user)
+  click_link "Donate an Experience"
+  enter_experience_donation
+  click_button "Create experience"
 end

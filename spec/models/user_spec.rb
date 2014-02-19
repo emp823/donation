@@ -9,4 +9,6 @@ describe User do
   it { should respond_to(:email) }
 
   it { should be_valid }
+
+  it { should have_many(:donations) }
 end

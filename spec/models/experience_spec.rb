@@ -13,13 +13,13 @@ describe Experience do
 
   it { should have_one(:donation) }
 
-  describe "is invalid without a latitude" do
-    before { @experience.latitude = nil }
+  describe "is invalid with invalid latitude" do
+    before { @experience.latitude = 200 }
     it { should_not be_valid }
   end
 
-  describe "is invalid without a longitude" do
-    before { @experience.longitude = nil }
+  describe "is invalid with invalid longitude" do
+    before { @experience.longitude = -200 }
     it { should_not be_valid }
   end
 

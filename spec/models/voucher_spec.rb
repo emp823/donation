@@ -11,8 +11,8 @@ describe Voucher do
 
   it { should have_one(:donation) }
 
-  describe "is invalid without an expiration date" do
-    before { @voucher.expiration_date = nil }
+  describe "is invalid with a past expiration date" do
+    before { @voucher.expiration_date = Date.today - 1 }
     it { should_not be_valid }
   end
 

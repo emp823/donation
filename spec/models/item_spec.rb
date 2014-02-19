@@ -13,18 +13,18 @@ describe Item do
 
   it { should have_one(:donation) }
 
-  describe "is invalid without a height" do
-    before { @item.height = nil }
+  describe "is invalid with <= 0 height" do
+    before { @item.height = -1 }
     it { should_not be_valid }
   end
 
-  describe "is invalid without a width" do
-    before { @item.width = nil }
+  describe "is invalid with <= 0 width" do
+    before { @item.width = -2 }
     it { should_not be_valid }
   end
 
-  describe "is invalid without a weight" do
-    before { @item.weight = nil }
+  describe "is invalid with <= 0 weight" do
+    before { @item.weight = 0 }
     it { should_not be_valid }
   end
 

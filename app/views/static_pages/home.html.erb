@@ -6,7 +6,9 @@
     <% unless user_signed_in? %>
       <p><%= link_to "Join now!", new_user_registration_path, class: "btn btn-primary btn-large" %></p>
     <% else %>
-      <p><%= link_to "Create New Donation", new_donation_path, class: "btn btn-primary btn-large" %></p>
+      <p><%= link_to "Donate an Item", new_item_path, class: "btn btn-primary btn-large" %></p>
+      <p><%= link_to "Donate a Voucher", new_voucher_path, class: "btn btn-primary btn-large" %></p>
+      <p><%= link_to "Donate an Experience", new_experience_path, class: "btn btn-primary btn-large" %></p>
     <% end %>
   </div>
   

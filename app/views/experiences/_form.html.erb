@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4">
+    <%= form_for @experience do |f| %>
+
+      <% if @experience.errors.any? %>
+        <div class="error_messages">
+          <h2><%= pluralize(@experience.errors.count, "error") %>:</h2>
+          <ul>
+          <% @experience.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <div>
+          <%= f.label :latitude, "Latitude" %></br>
+          <%= f.number_field :latitude %>
+        </div>
+        <div>
+          <%= f.label :longitude, "Longitude" %></br>
+          <%= f.number_field :longitude %>
+        </div>
+        <div>
+          <%= f.label :contact_name, "Contact Name" %></br>
+          <%= f.text_field :contact_name %>
+        </div>
+      </div>
+
+      </br>
+
+      <div class="field">
+        <%= f.fields_for :donation, @donation do |builder| %>
+          <%= render 'donations/donation_fields', f: builder %>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Create experience", class: "btn btn-large btn-primary" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

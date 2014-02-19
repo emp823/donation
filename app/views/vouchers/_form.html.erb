@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4">
+    <%= form_for @voucher do |f| %>
+
+      <% if @voucher.errors.any? %>
+        <div class="error_messages">
+          <h2><%= pluralize(@voucher.errors.count, "error") %>:</h2>
+          <ul>
+          <% @voucher.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <div>
+          <%= f.label :expiration_date, "Expiration Date" %></br>
+          <%= f.date_field :expiration_date %>
+        </div>
+      </div>
+
+      </br>
+
+      <div class="field">
+        <%= f.fields_for :donation, @donation do |builder| %>
+          <%= render 'donations/donation_fields', f: builder %>
+        <% end %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Create voucher", class: "btn btn-large btn-primary" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

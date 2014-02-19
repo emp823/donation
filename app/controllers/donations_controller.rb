@@ -10,7 +10,7 @@ class DonationsController < ApplicationController
     @donation = Donation.new(donation_params)
     @donation.user_id = current_user.id
     if @donation.save
-      redirect_to @donation, notice: "Successfully created donation!"
+      redirect_to current_user, notice: "Successfully created donation!"
     else
       render :new
     end
@@ -33,9 +33,6 @@ class DonationsController < ApplicationController
     @donation = donation.find(params[:id])
     @donation.destroy
     redirect_to donations_url, notice: "Destroyed donation"
-  end
-
-  def show
   end
 
   private

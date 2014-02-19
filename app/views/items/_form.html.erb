@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4">
+    <%= form_for @item do |f| %>
+
+      <% if @item.errors.any? %>
+        <div class="error_messages">
+          <h2><%= pluralize(@item.errors.count, "error") %>:</h2>
+          <ul>
+          <% @item.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <div>
+          <%= f.label :height, "Height" %></br>
+          <%= f.number_field :height %>
+        </div>
+        <div>
+          <%= f.label :width, "Width" %></br>
+          <%= f.number_field :width %>
+        </div>
+        <div>
+          <%= f.label :weight, "Weight" %></br>
+          <%= f.number_field :weight %>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.fields_for :donation, @donation do |builder| %>
+          <%= render 'donations/donation_fields', f: builder %>
+        <% end %>
+      </div>
+
+      </br>
+
+      <div class="actions">
+        <%= f.submit "Create item", class: "btn btn-large btn-primary" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
